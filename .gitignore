@@ -1,0 +1,21 @@
+# Local configuration containing credentials
+olake/config/source.json
+
+# Local environment files
+.env
+.env.*
+
+# macOS files
+.DS_Store
+# OLake destination credentials
+olake/config/destination.json
+spark/spark-defaults.conf
+olake/config/state.json
+
+!.env.example
+
+# OLake local runtime metadata
+olake/config/user_id.txt
+olake/config/stats.json
+olake/config/logs/
+iceberg/polaris/docker-compose-example.yml

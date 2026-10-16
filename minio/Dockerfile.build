@@ -1,0 +1,18 @@
+FROM golang:1.24-alpine AS builder
+
+RUN apk add --no-cache git
+
+WORKDIR /src
+COPY source/ .
+
+ENV CGO_ENABLED=0
+RUN GOMAXPROCS=2 go build -p 2 -o /minio .
+
+FROM alpine:3.21
+
+COPY --from=builder /minio /usr/local/bin/minio
+
+EXPOSE 9000 9001
+
+ENTRYPOINT ["minio"]
+CMD ["server", "/data", "--console-address", ":9001"]
