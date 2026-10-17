@@ -19,3 +19,6 @@ olake/config/user_id.txt
 olake/config/stats.json
 olake/config/logs/
 iceberg/polaris/docker-compose-example.yml
+
+# Local cron logs
+scripts/cron.log

@@ -306,3 +306,15 @@ ORDER BY order_id;
 | Final Spark verification  |                 16 |              16 | Data matches                          |
 
 These results demonstrate that OLake can perform both initial data ingestion and incremental synchronization into Apache Iceberg, with Apache Spark independently verifying the resulting data.
+
+### Automated CDC Sync (Every 5 Minutes)
+
+A macOS cron job runs `scripts/sync-olake.sh` every 5 minutes to automatically sync PostgreSQL changes into Apache Iceberg using OLake CDC. Each run is logged locally in `scripts/cron.log`.
+
+Cron schedule:
+```cron
+*/5 * * * * /bin/bash /path/to/project/scripts/sync-olake.sh >> /path/to/project/scripts/cron.log 2>&1
+
+
+
+```
